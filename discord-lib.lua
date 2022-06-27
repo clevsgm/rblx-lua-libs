@@ -1,58 +1,75 @@
---// main //--
-local lib = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/discord%20lib.txt")()
--- library^
-local win = lib:Window("Discord")
--- i dunno // dont move this // just creates a window^
+local DiscordLib = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/discord%20lib.txt")()
 
-local mainSv = win:Server("server", "")
--- varServer = win:Server("Name")^
+local win = DiscordLib:Window("discord library")
 
-local mainCh = mainSv:Channel("main")
--- varName = server:Channel("Name")^
+local serv = win:Server("Preview", "")
 
--------------------------------------
---// funcs // --
+local btns = serv:Channel("Buttons")
 
---button//
-mainCh:Button("Get max level", function()
+btns:Button("Kill all", function()
+DiscordLib:Notification("Notification", "Killed everyone!", "Okay!")
+end)
+
+btns:Seperator()
+
+btns:Button("Get max level", function()
 DiscordLib:Notification("Notification", "Max level!", "Okay!")
 end)
 
--- toggle//
-mainCh:Toggle("Auto-Farm",false, function(bool)
-    print(bool)
+local tgls = serv:Channel("Toggles")
+
+tgls:Toggle("Auto-Farm",false, function(bool)
+print(bool)
 end)
 
--- slider//
-local sldr = mainCh:Slider("Slide me!", 0, 1000, 400, function(t)
-    print(t)
-end)
-mainCh:Button("Change to 50", function()
-    sldr:Change(50)
+local sldrs = serv:Channel("Sliders")
+
+local sldr = sldrs:Slider("Slide me!", 0, 1000, 400, function(t)
+print(t)
 end)
 
--- dropdown//
-local drop = mainCh:Dropdown("Pick me!",{"Option 1","Option 2","Option 3","Option 4","Option 5"}, function(bool)
-    print(bool)
-end)
-mainCh:Button("Clear", function()
-    drop:Clear()
+sldrs:Button("Change to 50", function()
+sldr:Change(50)
 end)
 
--- colors picker//
-mainCh:Colorpicker("ESP Color", Color3.fromRGB(255,1,1), function(t)
-    print(t)
+local drops = serv:Channel("Dropdowns")
+
+
+local drop = drops:Dropdown("Pick me!",{"Option 1","Option 2","Option 3","Option 4","Option 5"}, function(bool)
+print(bool)
 end)
 
--- text box//
-mainCh:Textbox("Gun power", "Type here!", true, function(t)
-    print(t)
+drops:Button("Clear", function()
+drop:Clear()
 end)
 
--- label//
-mainCh:Label("This is just a label.")
-
--- bind//
-mainCh:Bind("Kill bind", Enum.KeyCode.RightShift, function()
-    print("Killed everyone!")
+drops:Button("Add option", function()
+drop:Add("Option")
 end)
+
+local clrs = serv:Channel("Colorpickers")
+
+clrs:Colorpicker("ESP Color", Color3.fromRGB(255,1,1), function(t)
+print(t)
+end)
+
+local textbs = serv:Channel("Textboxes")
+
+textbs:Textbox("Gun power", "Type here!", true, function(t)
+print(t)
+end)
+
+local lbls = serv:Channel("Labels")
+
+lbls:Label("This is just a label.")
+
+local bnds = serv:Channel("Binds")
+
+bnds:Bind("Kill bind", Enum.KeyCode.RightShift, function()
+print("Killed everyone!")
+end)
+
+serv:Channel("by dawid#7205")
+
+
+win:Server("Main", "http://www.roblox.com/asset/?id=6031075938")
