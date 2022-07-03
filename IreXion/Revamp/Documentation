@@ -1,0 +1,303 @@
+<table> Library {
+    <int> MaxNotificationStacking, (overwritable)
+    <int> NotificationMaxLineCount (overwritable)
+}
+
+----------
+
+<function> Library:AddGui(<table> {
+    <table> Title = {
+        <string> Title1,
+        <string> Title2
+    },
+    <Color3> ThemeColor,
+    <Enum.KeyCode> ToggleKey
+})
+
+return <table> Gui {
+    <ScreenGui> Gui,
+    <table> Tabs,
+    <Enum.KeyCode> ToggleKey,
+    <Color3> ThemeColor,
+    <boolean> Toggled
+}
+
+----------
+
+<function> Library:Notify(<string> description, <function> function(<boolean> yesno))
+
+return <table> Notification {
+    <ScreenGui> Gui,
+    <Frame> Holder,
+    <string> Description,
+    <function> Function,
+}
+
+----------
+
+<function> Notification:Select(<boolean> yesno)
+
+return nil
+
+--------------------------------------------------
+
+<function> Gui:Toggle(<boolean> guiToggled)
+
+return nil
+
+----------
+
+<function> Gui:SetStartupTab(<table> tab)
+
+return nil
+
+----------
+
+<function> Gui:SetTheme(<Color3> themeColor)
+
+return nil
+
+--------------------------------------------------
+
+<function> Gui:AddTab(<string> name)
+
+return <table> Tab {
+    <Frame> Holder,
+    <Frame> Tab,
+    <table> Toggles,
+    <table> BindToggles,
+    <table> SliderToggles
+}
+
+----------
+
+<function> Tab:Show()
+
+return nil
+
+----------
+
+<function> Tab:Hide()
+
+return nil
+
+----------
+
+<function> Tab:IsShown()
+
+return <boolean> isShown
+
+--------------------------------------------------
+
+<function> Tab:AddCategory(<string> name)
+
+return <table> Category {
+    <Frame> Holder,
+    <Frame> Frame
+}
+
+--------------------------------------------------
+
+<function> Category:AddButton(<string> name, <function> function())
+
+return <table> Button {
+    <Frame> Holder,
+    <TextButton> Button,
+    <function> Function
+}
+
+----------
+
+<function> Button:AddToolTip(<string> description)
+
+return nil
+
+--------------------------------------------------
+
+
+<function> Category:AddToggle(<string> name, <boolean> default, <function> function(<boolean> toggle))
+
+return <table> Toggle {
+    <Frame> Holder,
+    <boolean> Toggled,
+    <function> Function
+}
+
+----------
+
+<function> Toggle:Set(<boolean> enabled)
+
+return nil
+
+----------
+
+<function> Toggle:AddToolTip(<string> description)
+
+return nil
+
+--------------------------------------------------
+
+<function> Category:AddBox(<string> name, <function> function(<string> text))
+
+return <table> Box {
+    <Frame> Holder,
+    <TextBox> Box,
+    <function> Function
+}
+
+----------
+
+<function> Box:AddToolTip(<string> description)
+
+return nil
+
+--------------------------------------------------
+
+<function> Category:AddLabel(<string> name)
+
+return <table> Label {
+    <Frame> Holder,
+    <TextLabel> Label
+}
+
+--------------------------------------------------
+
+<function> Category:AddDualLabel(<table> { <string> text1, <string> text2 })
+
+return <table> DualLabel {
+    <Frame> Holder,
+    <TextLabel> Label1,
+    <TextLabel> Label2
+}
+
+--------------------------------------------------
+
+<function> Category:AddSlider(<string> name, <int> min, <int> max, <int> default, <boolean> rounded, <function> function(<int> value))
+
+return <table> Slider {
+    <Frame> Holder,
+    <int> Value,
+    <function> Function
+}
+
+----------
+
+<function> Slider:Set(<int> value)
+
+return nil
+
+----------
+
+<function> Slider:AddToolTip(<string> description)
+
+return nil
+
+--------------------------------------------------
+
+<function> Category:AddToggleSlider(<string> name, <int> min, <int> max, <int> default, <boolean> rounded, <boolean> toggleDefault, <function> function(<int> value))
+
+return <table> ToggleSlider {
+    <Frame> Holder,
+    <int> Value,
+    <boolean> Toggled,
+    <function> Function
+}
+
+----------
+
+<function> ToggleSlider:Set(<int> value)
+
+return nil
+
+----------
+
+<function> ToggleSlider:Toggle(<boolean> enabled)
+
+return nil
+
+----------
+
+<function> ToggleSlider:AddToolTip(<string> description)
+
+return nil
+
+--------------------------------------------------
+
+<function> Category:AddDropdown(<string> name, <table> items, <function> function(<string> itemName))
+
+return <table> Dropdown {
+    <Frame> Holder,
+    <table> Items,
+    <string> Selected,
+    <int> MaxVisibleItems,
+    <function> Function
+}
+
+----------
+
+<function> Dropdown:AddItem(<string> name)
+
+return nil
+
+----------
+
+<function> Dropdown:RemoveItem(<string> name)
+
+return nil
+
+----------
+
+<function> Dropdown:AddToolTip(<string> description)
+
+return nil
+
+--------------------------------------------------
+
+<function> Category:AddBind(<string> name, <Enum.KeyCode> bind, <function> function())
+
+return <table> Bind {
+    <Frame> Holder,
+    <Enum.KeyCode> Bind,
+    <function> Function
+}
+
+----------
+
+<function> Bind:Set(<Enum.KeyCode> bind)
+
+return nil
+
+----------
+
+<function> Bind:AddToolTip(<string> description)
+
+return nil
+
+--------------------------------------------------
+
+<function> Category:AddToggleBind(<string> name, <Enum.KeyCode> bind, <boolean> default, <function> function())
+
+return <table> ToggleBind {
+    <Frame> Holder,
+    <Enum.KeyCode> Bind,
+    <boolean> Toggled,
+    <function> Function
+}
+
+----------
+
+<function> ToggleBind:Set(<Enum.KeyCode> bind)
+
+return nil
+
+----------
+
+<function> ToggleBind:Toggle(<boolean> enabled)
+
+return nil
+
+----------
+
+<function> ToggleBind:AddToolTip(<string> description)
+
+return nil
